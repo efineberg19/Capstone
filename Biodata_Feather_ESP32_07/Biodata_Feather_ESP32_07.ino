@@ -102,6 +102,7 @@ MIDI_CREATE_INSTANCE(Adafruit_USBD_MIDI, usb_midi, usbMIDI);
 // Ambient Light Sensor
 #include "Adafruit_VEML7700.h"
 Adafruit_VEML7700 veml = Adafruit_VEML7700();
+bool lightSensing = 1;
 
 //Bluetooth Configuration
 #include <BLEDevice.h>

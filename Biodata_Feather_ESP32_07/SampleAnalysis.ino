@@ -33,6 +33,7 @@ void analyzeSample() {
   byte ccValue = 0;
   int ramp = 0;
   byte vel = 0;
+  int octave = 0;
 
   if (sampleIndex >= samplesize) {          //array is full
     unsigned long sampanalysis[analysize];  //copy to new array - is this needed?
@@ -77,9 +78,26 @@ void analyzeSample() {
       //if(velMode == 5) vel = delta%127;
       vel = map(vel, 0, 127, 80, 110);  //musical velocity range
 
+      int lux = veml.readLux();
+
+      if (lux <= 20) {  // very dark
+        octave = 1;
+      } else if (lux > 20 && lux <= 200) {  // expected level for homes
+        octave = 2;
+      } else if (lux > 200 && lux <= 450) {  // typical value for classroom
+        octave = 3;
+      } else if (lux > 450 && lux <= 1000) {  // typical value for offices or stores
+        octave = 4;
+      } else if (lux > 1000) {  // very bright! hospital level
+        octave = 5;
+      }
+
+      // TODO: taking a break, but right now the notes span from octave 0 to 3. I want more range! Fix this later
+      int note_in_octave = ((averg % 12) + ((octave + 2) * 12)) % 127;
+
       //set scaling, root key, note
-      setnote = map(averg % 127, 0, 127, noteMin, noteMax);  //derive note, min and max note
-      setnote = scaleNote(setnote, scaleSelect, root);       //scale the note
+      setnote = note_in_octave;//map(note_in_octave, 0, 127, noteMin, noteMax);  //derive note, min (36) and max note (96)
+      setnote = scaleNote(setnote, scaleSelect, root);                            //scale the note
       // setnote = setnote + root; // (apply root?)
       setNote(setnote, vel, dur, channel);  //modify velocity, using note repetition or something?
 

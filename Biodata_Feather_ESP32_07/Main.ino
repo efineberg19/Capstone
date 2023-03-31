@@ -124,6 +124,7 @@ void setup() {
   // Light Sensor
   if (debugSerial && !veml.begin()) {
     Serial.println("Sensor not found");
+    lightSensing = false;
   } else if (debugSerial) {
     Serial.println("Sensor found");
 
@@ -182,7 +183,7 @@ void loop() {
   checkButton();
 
   // Ambient Light Sensor
-  if (debugSerial) {
+  if (debugSerial && lightSensing) {
     Serial.print("raw ALS: "); Serial.println(veml.readALS());
     Serial.print("raw white: "); Serial.println(veml.readWhite());
     Serial.print("lux: "); Serial.println(veml.readLux());
