@@ -6,4 +6,4 @@ Once assembled, I bought two new sensors for [Ambient Light Sensing](https://www
 
 This code is meant to run on an Adafruit ESP32 Feather S3. The kit I built this upon can be found [here](https://electricityforprogress.square.site/product/biodata-sonification-diy-kit/17?cs=true&cst=custom). The repository which I built my new functionality upon can be found [here](https://github.com/electricityforprogress/BiodataFeather).
 
-Many thanks to Skot Wiedmann for being my project mentor as well as Samuel Cusumano @electricityforprogress for providing such high quality documentation and taking the time to answer all of my questions.
+Many thanks to Skot Wiedmann for being my project mentor as well as Samuel Cusumano [@electricityforprogress] for providing such high quality documentation and taking the time to answer all of my questions!
