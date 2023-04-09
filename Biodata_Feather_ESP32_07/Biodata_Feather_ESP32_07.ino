@@ -104,6 +104,11 @@ MIDI_CREATE_INSTANCE(Adafruit_USBD_MIDI, usb_midi, usbMIDI);
 Adafruit_VEML7700 veml = Adafruit_VEML7700();
 bool lightSensing = 1;
 
+// Soil Sensor
+#include "Adafruit_seesaw.h"
+Adafruit_seesaw ss;
+bool soilSensing = 1;
+
 //Bluetooth Configuration
 #include <BLEDevice.h>
 #include <BLEUtils.h>

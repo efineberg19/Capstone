@@ -151,6 +151,14 @@ void setup() {
     veml.interruptEnable(true);    
   }
 
+  // Soil Sensor
+  if (debugSerial && !ss.begin(0x36)) {
+    Serial.println("ERROR! seesaw not found");
+    soilSensing = false;
+  } else if (debugSerial) {
+    Serial.print("seesaw started! version: ");
+    Serial.println(ss.getVersion(), HEX);
+  }
 }  //end setup(){}
 
 // -----------------------------------------------------------------------------
@@ -196,6 +204,16 @@ void loop() {
       Serial.println("** High threshold");
     }
     delay(500);
+  }
+
+  // Soil Sensor
+  if (debugSerial && soilSensing) {
+    float tempC = ss.getTemp();
+    uint16_t capread = ss.touchRead(0);
+
+    Serial.print("Temperature: "); Serial.print(tempC); Serial.println("*C");
+    Serial.print("Capacitive: "); Serial.println(capread);
+    delay(100);
   }
 
 }  //end loop(){}
