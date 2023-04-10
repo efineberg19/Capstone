@@ -50,6 +50,13 @@ void setControl(int type, int value, int velocity, long duration) {
   //  if(debugSerial) {
   //    Serial.print("setControl CC"); Serial.print(controlNumber); Serial.print(" value "); Serial.println(velocity);
   //  }
+  if (soilSensing) {
+    reverbControlMessage.type = reverbControlNumber;
+    reverbControlMessage.value = reverbAmount;
+    reverbControlMessage.velocity = velocity; // not actually controlling velocity, instead controls reverb value
+    reverbControlMessage.period = duration;
+    reverbControlMessage.duration = currentMillis + duration;  //schedule for update cycle
+  }
 }
 
 
@@ -84,6 +91,19 @@ void checkControl() {
         pCharacteristic->setValue(midiPacket, 5);  // packet, length in bytes
         pCharacteristic->notify();
       }
+    }
+  }
+
+  if (soilSensing) {
+    if (serialMIDI) midiSerial(176, channel, reverbControlMessage.type, reverbControlMessage.value);
+    if (usbmidi) usbMIDI.sendControlChange(reverbControlNumber, reverbControlMessage.value, channel);
+    if (wifiMIDI && isConnected) { MIDI.sendControlChange(reverbControlNumber, reverbControlMessage.value, channel); }  //AppleMIDI.sendControlChange?
+    if (deviceConnected) {    
+      midiPacket[2] = (176 | (0xB & (channel - 1)));
+      midiPacket[3] = reverbControlNumber;                                                                        
+      midiPacket[4] = reverbControlMessage.value;
+      pCharacteristic->setValue(midiPacket, 5);  // packet, length in bytes
+      pCharacteristic->notify();
     }
   }
 }

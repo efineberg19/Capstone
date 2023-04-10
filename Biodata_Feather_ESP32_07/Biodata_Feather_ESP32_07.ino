@@ -73,6 +73,7 @@ byte midiControl = channel;  // 1; //use channel 16 to recieve parameter changes
 int noteMin = 36;         //C2  - keyboard note minimum
 int noteMax = 96;         //C7  - keyboard note maximum
 byte controlNumber = 80;  //set to mappable control, low values may interfere with other soft synth controls!!
+byte reverbControlNumber = 91;
 unsigned long rawSerialTime = 0;
 int rawSerialDelay = 0;
 // **************************************
@@ -108,6 +109,7 @@ bool lightSensing = 1;
 #include "Adafruit_seesaw.h"
 Adafruit_seesaw ss;
 bool soilSensing = 1;
+int reverbAmount = 64;
 
 //Bluetooth Configuration
 #include <BLEDevice.h>
@@ -359,6 +361,7 @@ MIDImessage noteArray[polyphony];  //manage MIDImessage data as an array with si
 int noteIndex = 0;
 MIDImessage controlMessage;  //manage MIDImessage data for Control Message (CV out)
 
+MIDImessage reverbControlMessage;  //manage MIDImessage data for Control Message (CV out) to change reverb
 
 
 #if defined(ARDUINO_SAMD_ZERO) && defined(SERIAL_PORT_USBVIRTUAL)

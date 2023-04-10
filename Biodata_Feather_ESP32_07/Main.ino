@@ -214,6 +214,22 @@ void loop() {
     Serial.print("Temperature: "); Serial.print(tempC); Serial.println("*C");
     Serial.print("Capacitive: "); Serial.println(capread);
     delay(100);
+
+    Serial.print("Reverb Amount: "); Serial.println(reverbAmount);
+  }
+
+  if (soilSensing) {
+    uint16_t capread = ss.touchRead(0);
+    if (capread > 1015) {
+      capread = 1015; // prevents mapping from working if reading too high, soil moisture typically between 300-500 according to Arduino
+      // https://learn.adafruit.com/adafruit-stemma-soil-sensor-i2c-capacitive-moisture-sensor/arduino-test
+    }
+
+    if (capread < 300) {
+      capread = 300;
+    }
+
+    reverbAmount = map(capread, 300, 1015, 0, 127);
   }
 
 }  //end loop(){}
