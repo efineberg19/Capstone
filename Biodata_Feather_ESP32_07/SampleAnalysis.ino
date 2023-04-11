@@ -92,7 +92,6 @@ void analyzeSample() {
         octave = 5;
       }
 
-      // TODO: taking a break, but right now the notes span from octave 0 to 3. I want more range! Fix this later
       int note_in_octave = ((averg % 12) + ((octave + 2) * 12)) % 127;
 
       //set scaling, root key, note
