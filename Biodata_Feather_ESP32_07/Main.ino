@@ -192,9 +192,9 @@ void loop() {
 
   // Ambient Light Sensor
   if (debugSerial && lightSensing) {
-    Serial.print("raw ALS: "); Serial.println(veml.readALS());
-    Serial.print("raw white: "); Serial.println(veml.readWhite());
-    Serial.print("lux: "); Serial.println(veml.readLux());
+    // Serial.print("raw ALS: "); Serial.println(veml.readALS());
+    // Serial.print("raw white: "); Serial.println(veml.readWhite());
+    // Serial.print("lux: "); Serial.println(veml.readLux());
 
     uint16_t irq = veml.interruptStatus();
     if (irq & VEML7700_INTERRUPT_LOW) {
@@ -211,11 +211,11 @@ void loop() {
     float tempC = ss.getTemp();
     uint16_t capread = ss.touchRead(0);
 
-    Serial.print("Temperature: "); Serial.print(tempC); Serial.println("*C");
-    Serial.print("Capacitive: "); Serial.println(capread);
+    // Serial.print("Temperature: "); Serial.print(tempC); Serial.println("*C");
+    // Serial.print("Capacitive: "); Serial.println(capread);
     delay(100);
 
-    Serial.print("Reverb Amount: "); Serial.println(reverbAmount);
+    // Serial.print("Reverb Amount: "); Serial.println(reverbAmount);
   }
 
   if (soilSensing) {

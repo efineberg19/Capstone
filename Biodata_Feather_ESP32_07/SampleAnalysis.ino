@@ -96,8 +96,13 @@ void analyzeSample() {
 
       //set scaling, root key, note
       setnote = note_in_octave;//map(note_in_octave, 0, 127, noteMin, noteMax);  //derive note, min (36) and max note (96)
-      setnote = scaleNote(setnote, scaleSelect, root);                            //scale the note
+      setnote = scaleNote(setnote, scaleSelect, root); 
+                                 //scale the note
       // setnote = setnote + root; // (apply root?)
+
+      if (debugSerial) {
+        Serial.print("scale: "); Serial.print(scaleSelect[0]); Serial.println(scaleSelect[3]);
+      }
       setNote(setnote, vel, dur, channel);  //modify velocity, using note repetition or something?
 
       //derive control parameters and set

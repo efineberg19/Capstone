@@ -46,14 +46,14 @@ const byte polyphony = 5;  // 1; //mono  // number of notes to track at a given 
 //set scaled values, sorted array, first element scale length
 //the whole scaling algorithm needs to be refactored ;)
 //int scaleDiaMinor[]  = {7, 0, 2, 3, 5, 7, 8, 10};
-int scalePenta[] = { 5, 0, 3, 5, 7, 9 };
+int scalePenta[] = { 5, 0, 2, 4, 7, 9 }; //{ 5, 0, 3, 5, 7, 9 };
 int scaleMajor[] = { 7, 0, 2, 4, 5, 7, 9, 11 };
 int scaleIndian[] = { 7, 0, 1, 1, 4, 5, 8, 10 };
 int scaleMinor[] = { 7, 0, 2, 3, 5, 7, 8, 10 };
 int scaleChrom[] = { 13, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 };
 //enter the scale name here to use
-int *scaleSelect = scaleChrom;  //initialize scaling
-byte defScale = 3;
+int *scaleSelect = scaleMajor;  //initialize scaling
+byte defScale = 2; // 3 is pentatonic, 2 is major
 
 int root = 0;  //initialize for root
 //*******************************
