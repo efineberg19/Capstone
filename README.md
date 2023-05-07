@@ -1,5 +1,7 @@
-# Plant Synthesizer Capstone Project
-I have created this project to fulfill the Senior Capstone requirement for the B.S. in Computer Science and Music degree at University of Illinois at Urbana-Champaign (UIUC). My goal is to create a synthesizer which turns plant biodata into music. 
+# Plant MIDI Capstone Project
+![Alt text](https://github.com/efineberg19/Capstone/blob/master/CapstonePhoto.jpg)
+
+I have created this project to fulfill the Senior Capstone requirement for the B.S. in Computer Science and Music degree at University of Illinois at Urbana-Champaign (UIUC). My goal was to create a device which turns plant biodata into music in the form of MIDI. 
 
 In order to do this, I purchased and assembled a kit from [Electricity For Progress](https://electricityforprogress.com/biodata-sonification/).
 Once assembled, I bought two new sensors for [Ambient Light Sensing](https://www.adafruit.com/product/4162) and [Soil Moisture Sensing](https://www.adafruit.com/product/4026). In this repository, I have added support for these sensors and figured out how to integrate their data into the existing MIDI output.
