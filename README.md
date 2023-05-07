@@ -1,5 +1,6 @@
 # Plant MIDI Capstone Project
 ![Alt text](https://github.com/efineberg19/Capstone/blob/master/CapstonePhoto.jpg)
+<img src="https://github.com/efineberg19/Capstone/blob/master/CapstonePhoto.jpg" width="2000" height="2648">
 
 I have created this project to fulfill the Senior Capstone requirement for the B.S. in Computer Science and Music degree at University of Illinois at Urbana-Champaign (UIUC). My goal was to create a device which turns plant biodata into music in the form of MIDI. 
 
